@@ -18,10 +18,10 @@ vim.g.maplocalleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
-keymap("n", "q", "<Left>", opts)
-keymap("n", "d", "<Right>", opts)
-keymap("n", "z", "<Up>", opts)
-keymap("n", "s", "<Down>", opts)
+keymap("n", "h", "<Left>", opts)
+keymap("n", "j", "<Down>", opts)
+keymap("n", "k", "<Right>", opts)
+keymap("n", "l", "<Up>", opts)
 
 -- Normal --
 -- Better window navigation

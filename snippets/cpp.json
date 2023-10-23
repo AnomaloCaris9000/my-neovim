@@ -1,0 +1,25 @@
+{
+    "include": {
+        "prefix": "incstdio",
+        "body": ["#include <stdio.h>"]
+    },
+    "main": {
+        "prefix": "main",
+        "body": [
+            "int main(int argc, char **argv)",
+            "{",
+            "   $0",
+            "   return 0;",
+            "}"
+        ]
+    },
+    "for": {
+        "prefix": "for",
+        "body": [
+            "for(int $0 = $1; $0 < $2; $0++)",
+            "{",
+            "   $3",
+            "}"
+        ]
+    }
+}
