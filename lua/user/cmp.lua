@@ -30,7 +30,7 @@ local kind_icons = {
 	Unit = "󰑭",
 	Value = "󰎠",
 	Enum = "",
-	Keyword = "󰌋",
+ 	Keyword = "󰌋",
   Snippet = "",
 	Color = "󰏘",
 	File = "󰈙",
@@ -45,6 +45,36 @@ local kind_icons = {
 	Misc = " ",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
+
+-- default server
+local my_source = {}
+
+my_source.new = function()
+  local self = setmetatable({}, { __index = my_source })
+  return self
+end
+
+my_source.get_keyword_pattern = function()
+  return [[\k\+]]
+end
+
+function my_source.complete(_, _, callback)  
+  local word = vim.fn.expand("<cword>")
+  local items = {{ label = word, kind = cmp.lsp.CompletionItemKind.Text }}
+  return callback(items)
+end
+
+function my_source.execute(_, completion_item, callback)
+  callback(completion_item)
+end
+
+function my_source.get_trigger_characters()
+  local word = vim.fn.expand("<cword>")
+  local last_c = word.sub(word, -1)
+  return { last_c }
+end
+
+cmp.register_source("my_source", my_source)
 
 cmp.setup {
   snippet = {
@@ -102,7 +132,7 @@ cmp.setup {
       vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
       -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
       vim_item.menu = ({
-        -- default = "[~]",
+        my_source = "[~]",
         nvim_lsp = "[LSP]",
         luasnip = "[Snippet]",
         buffer = "[Buffer]",
@@ -112,7 +142,7 @@ cmp.setup {
     end,
   },
   sources = {
-    -- { name = "default"},
+    { name = "my_source"},
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },
