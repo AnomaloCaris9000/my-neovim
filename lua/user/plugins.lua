@@ -103,6 +103,10 @@ return packer.startup(function(use)
 	-- Templates
 	use { "https://github.com/pianocomposer321/project-templates.nvim.git" }
 
+	-- Latex
+	use { "https://github.com/kdheepak/cmp-latex-symbols"}
+	use { "https://github.com/micangl/cmp-vimtex" }
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
