@@ -107,6 +107,9 @@ return packer.startup(function(use)
 	use { "https://github.com/kdheepak/cmp-latex-symbols"}
 	use { "https://github.com/micangl/cmp-vimtex" }
 
+	-- Ocaml
+	--use {"https://github.com/tree-sitter/tree-sitter-ocaml.git"}
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
