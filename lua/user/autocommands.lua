@@ -29,7 +29,6 @@ vim.cmd [[
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
 
-  autocmd FileType * lua require("lang.init")
 ]]
 
 -- Autoformat
